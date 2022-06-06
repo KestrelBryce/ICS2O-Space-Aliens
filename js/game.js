@@ -2,10 +2,12 @@
 
 import SplashScene from "./splashScene.js"
 import TitleScene from "./titleScene.js"
+import MenuScene from "./menuScene.js"
 
 // Our game scenes
 const splashScene = new SplashScene()
 const titleScene = new TitleScene()
+const menuScene = new MenuScene()
 
 //* Game scene */
 const config = {
