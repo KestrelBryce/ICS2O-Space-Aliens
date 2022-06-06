@@ -8,7 +8,7 @@ class TitleScene extends Phaser.Scene {
 
   // colour in rgb
   init (data) {
-    this.cameras.main.setBackgroundColor('#ffffff')
+    this.cameras.main.setBackgroundColor('#B23116')
   }
 
   // print scene to console for debugging
@@ -17,9 +17,13 @@ class TitleScene extends Phaser.Scene {
   }
 
   create (data) {
+    
   }
 
   update (time, delta) {
+    if (time > 3000) {
+      this.scene.switch('titleScene')
+    }
   }
 }
 
