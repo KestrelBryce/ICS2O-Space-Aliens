@@ -6,7 +6,7 @@ class SplashScene extends Phaser.Scene {
     super({ key: 'splashScene' })
   }
 
-  // colour in rgb
+  // background colour in rgb
   init (data) {
     // change background colour
     this.cameras.main.setBackgroundColor('#609EA2')
@@ -26,7 +26,7 @@ class SplashScene extends Phaser.Scene {
 
   // stopping splash scene and moving to title screen
   update (time, delta) {
-    if (time > 10000) {
+    if (time > 1000) {
       this.scene.switch('titleScene')
     }
     

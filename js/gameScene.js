@@ -1,9 +1,9 @@
 /* global phaser */
 
-// This is the Menu scene
+// This is the Game scene
 class MenuScene extends Phaser.Scene {
   constructor () {
-    super({ key: 'menuScene' })
+    super({ key: 'gameScene' })
   }
 
   // background colour in rgb
@@ -13,19 +13,19 @@ class MenuScene extends Phaser.Scene {
 
   // print scene to console for debugging
   preload () {
-    console.log('Menu Scene')
+    console.log('Game Scene')
   }
 
   create (data) {
     
   }
 
-  // switching to the menu scene
+  // switching to the game scene
   update (time, delta) {
     if (time > 3000) {
-      this.scene.switch('menuScene')
+      this.scene.switch('gameScene')
     }
   }
 }
 
-export default MenuScene
+export default GameScene
