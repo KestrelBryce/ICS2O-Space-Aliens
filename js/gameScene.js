@@ -9,6 +9,8 @@ class GameScene extends Phaser.Scene {
     this.background = null
     // variable holding spaceship
     this.ship = null
+    // boolean holding state of missiles fired
+    this.fireMissile = false
   }
 
   // background colour in rgb
@@ -25,6 +27,8 @@ class GameScene extends Phaser.Scene {
     this.load.image('starBackground', 'images/starBackground.png')
     // load ship image
     this.load.image('ship', 'images/spaceShip.png')
+    // load 
+    this.load.image('missile', 'images/missile.png')
   }
 
   create (data) {
@@ -35,6 +39,9 @@ class GameScene extends Phaser.Scene {
 
     // adding ship physics
     this.ship = this.physics.add.sprite(1920 / 2, 1080 - 100, 'ship')
+
+    // adding a group for the missiles
+    this.missileGroup = this.physics.add.group()
   }
 
   // 
@@ -45,6 +52,8 @@ class GameScene extends Phaser.Scene {
     const keyLeftObj = this.input.keyboard.addKey('LEFT')
     // looks for input from right key
     const keyRightObj = this.input.keyboard.addKey('RIGHT')
+    // looks for input from space key
+    const keySpaceObj = this.input.keyboard.addKey('SPACE')
     
     // moves ship left
     if (keyLeftObj.isDown === true) {
@@ -61,6 +70,22 @@ class GameScene extends Phaser.Scene {
         this.ship.x = 1920
       }
     }
+
+    // determines if missile should be fired
+    if (keySpaceObj.isDown === true) {
+      if (this.fireMissile === false) {
+        // fire missile
+        this.fireMissile = true
+        const aNewMissile = this.physics.add.sprite(this.ship.x, this.ship.y, 'missile')
+        this.missileGroup.add(aNewMissile)
+      }
+    }
+    
+    if (keySpaceObj.isUp === true) {
+      this.fireMissile = false
+    }
+    
+  
   }
 }
 
