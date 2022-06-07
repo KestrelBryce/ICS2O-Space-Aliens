@@ -26,7 +26,7 @@ class SplashScene extends Phaser.Scene {
 
   // stopping splash scene and moving to title screen
   update (time, delta) {
-    if (time > 1000) {
+    if (time > 500) {
       this.scene.switch('titleScene')
     }
     
