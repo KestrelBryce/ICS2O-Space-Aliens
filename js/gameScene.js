@@ -1,7 +1,7 @@
 /* global phaser */
 
 // This is the Game scene
-class MenuScene extends Phaser.Scene {
+class GameScene extends Phaser.Scene {
   constructor () {
     super({ key: 'gameScene' })
   }
