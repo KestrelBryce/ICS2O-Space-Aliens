@@ -49,9 +49,9 @@ class GameScene extends Phaser.Scene {
     // hopefully called 60 times a second
 
     // looks for input from left key
-    const keyLeftObj = this.input.keyboard.addKey('LEFT')
+    const keyLeftObj = this.input.keyboard.addKey('A')
     // looks for input from right key
-    const keyRightObj = this.input.keyboard.addKey('RIGHT')
+    const keyRightObj = this.input.keyboard.addKey('D')
     // looks for input from space key
     const keySpaceObj = this.input.keyboard.addKey('SPACE')
     
