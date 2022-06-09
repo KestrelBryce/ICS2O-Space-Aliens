@@ -38,7 +38,7 @@ class GameScene extends Phaser.Scene {
     this.background.setOrigin(0,0)
 
     // adding ship physics
-    this.ship = this.physics.add.sprite(1920 / 2, 1080 - 100, 'ship')
+    this.ship = this.physics.add.sprite(200, 1080 - 500, 'ship')
 
     // adding a group for the missiles
     this.missileGroup = this.physics.add.group()
@@ -49,25 +49,25 @@ class GameScene extends Phaser.Scene {
     // hopefully called 60 times a second
 
     // looks for input from left key
-    const keyLeftObj = this.input.keyboard.addKey('A')
+    const keyUpObj = this.input.keyboard.addKey('W')
     // looks for input from right key
-    const keyRightObj = this.input.keyboard.addKey('D')
+    const keyDownObj = this.input.keyboard.addKey('S')
     // looks for input from space key
     const keySpaceObj = this.input.keyboard.addKey('SPACE')
     
     // moves ship left
-    if (keyLeftObj.isDown === true) {
-      this.ship.x = this.ship.x - 15
-      if (this.ship.x < 0) {
-        this.ship.x = 0
+    if (keyUpObj.isDown === true) {
+      this.ship.y = this.ship.y - 15
+      if (this.ship.y < 0) {
+        this.ship.y = 0
       }
     }
 
     // moves ship right
-    if (keyRightObj.isDown === true) {
-      this.ship.x = this.ship.x + 15
-      if (this.ship.x > 1920) {
-        this.ship.x = 1920
+    if (keyDownObj.isDown === true) {
+      this.ship.y = this.ship.y + 15
+      if (this.ship.y > 1050) {
+        this.ship.y = 1050
       }
     }
 
