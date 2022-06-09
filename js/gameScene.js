@@ -2,6 +2,13 @@
 
 // This is the Game scene
 class GameScene extends Phaser.Scene {
+
+  // create a zombie
+  createZombie () {
+    const aZombie = this.physics.add.sprite(100, 100, 'Zombie_sprite', width = '100px', length = 'auto')
+    this.zombieGroup.add(aZombie)
+  }
+  
   constructor () {
     super({ key: 'gameScene' })
 
@@ -27,8 +34,14 @@ class GameScene extends Phaser.Scene {
     this.load.image('starBackground', 'images/starBackground.png')
     // load ship image
     this.load.image('ship', 'images/spaceShip.png')
-    // load 
+    // load missile image
     this.load.image('missile', 'images/missile.png')
+    // load zombie image
+    this.load.image('Zombie_sprite', 'updatedImages/Zombie_sprite.webp')
+
+    // sounds
+    // load missile sound
+    this.load.audio('laser', 'sounds/laser1.wav')
   }
 
   create (data) {
@@ -42,6 +55,10 @@ class GameScene extends Phaser.Scene {
 
     // adding a group for the missiles
     this.missileGroup = this.physics.add.group()
+
+    // adding a group for the zombies
+    this.zombieGroup = this.add.group()
+    this.createZombie()
   }
 
   // 
@@ -78,13 +95,21 @@ class GameScene extends Phaser.Scene {
         this.fireMissile = true
         const aNewMissile = this.physics.add.sprite(this.ship.x, this.ship.y, 'missile')
         this.missileGroup.add(aNewMissile)
+        // add missile sound
+        this.sound.play('laser')
       }
     }
     
     if (keySpaceObj.isUp === true) {
       this.fireMissile = false
     }
-    
+
+    this.missileGroup.children.each(function (item) {
+      item.x = item.x + 15
+      if (item.x > 2000) {
+        item.destroy()
+      }
+    })
   
   }
 }
