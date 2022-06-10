@@ -71,6 +71,17 @@ class GameScene extends Phaser.Scene {
     // adding a group for the zombies
     this.zombieGroup = this.add.group()
     this.createZombie()
+
+    // collisions between zombies and bullets
+  this.physics.add.collider(this.missileGroup, this.zombieGroup, function (missileCollide, zombieCollide){
+    zombieCollide.destroy()
+    missileCollide.destroy()
+    // play zombie death
+    this.sound.play('explosion')
+    // for every destroyed, two spawn
+    this.createZombie()
+    this.createZombie()
+  }.bind(this))
   }
 
   // 
