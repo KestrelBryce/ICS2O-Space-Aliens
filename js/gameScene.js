@@ -9,13 +9,13 @@ class GameScene extends Phaser.Scene {
     const zombieYLocation = Math.floor(Math.random() * 1050) + 0 // this will get a number between 1050 amd 0;
     
     // randomizing zombie velocity???  >:P
-    let zombieXVelocity = Math.floor(Math.random() * 50) + 1 // this will get a number between 50 amd 1;
-    zombieXVelocity *= Math.round(Math.random()) ? 1 : -1 // adding minus sign in 50% of cases
+    let zombieYVelocity = Math.floor(Math.random() * 50) + 1 // this will get a number between 50 amd 1;
+    zombieYVelocity *= Math.round(Math.random()) ? 1 : -1 // adding minus sign in 50% of cases
 
     // adding zombie sprite
     const aZombie = this.physics.add.sprite(2000, zombieYLocation, 'Zombie_sprite') // .setScale(-5)
     aZombie.body.velocity.x = -200
-    aZombie.body.velocity.y = zombieXVelocity
+    aZombie.body.velocity.y = zombieYVelocity
 
 
     this.zombieGroup.add(aZombie)
@@ -54,6 +54,8 @@ class GameScene extends Phaser.Scene {
     // sounds
     // load missile sound
     this.load.audio('laser', 'sounds/laser1.wav')
+    // load zombie death
+    this.load.audio('explosion', 'sounds/barrelExploding.wav')
   }
 
   create (data) {
@@ -73,7 +75,7 @@ class GameScene extends Phaser.Scene {
     this.createZombie()
 
     // collisions between zombies and bullets
-  this.physics.add.collider(this.missileGroup, this.zombieGroup, function (missileCollide, zombieCollide){
+  this.physics.add.collider(this.missileGroup, this.zombieGroup, function (missileCollide, zombieCollide) {
     zombieCollide.destroy()
     missileCollide.destroy()
     // play zombie death
@@ -82,9 +84,9 @@ class GameScene extends Phaser.Scene {
     this.createZombie()
     this.createZombie()
   }.bind(this))
-  }
+}
 
-  // 
+  // checking stuff
   update (time, delta) {
     // hopefully called 60 times a second
 
