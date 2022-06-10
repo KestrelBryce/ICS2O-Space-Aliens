@@ -69,21 +69,17 @@ class GameScene extends Phaser.Scene {
     this.background = this.add.image(0, 0, 'starBackground').setScale(2.0)
     // place background
     this.background.setOrigin(0,0)
-
     // adding score text
     this.scoreText = this.add.text(10, 10, 'score: ' + this.score.toString(), this.scoreTextStyle)
-    
     // adding ship physics
     this.ship = this.physics.add.sprite(200, 1080 - 500, 'ship')
-
     // adding a group for the missiles
     this.missileGroup = this.physics.add.group()
-
     // adding a group for the zombies
     this.zombieGroup = this.add.group()
     this.createZombie()
 
-    // collisions between zombies and bullets
+  // collisions between zombies and bullets
   this.physics.add.collider(this.missileGroup, this.zombieGroup, function (missileCollide, zombieCollide) {
     zombieCollide.destroy()
     missileCollide.destroy()
@@ -97,6 +93,16 @@ class GameScene extends Phaser.Scene {
     this.createZombie()
     this.createZombie()
   }.bind(this))
+
+  // collisions between zombies and player
+  this.physics.add.collider(this.ship, this.zombieGroup, function (playerCollide, zombieCollide) {
+    this.sound.play('bomb')
+    this.physics.pause()
+    zombieCollide.destroy()
+    playerCollide.destroy()
+    this.scene.switch('deadScene')
+  }.bind(this))
+  
 }
 
   // checking stuff
@@ -148,6 +154,11 @@ class GameScene extends Phaser.Scene {
         item.destroy()
       }
     })
+
+    // switching to dead scene
+    //if (gameDeath === true) {
+    //  this.scene.switch('deadScene')
+    //}
   
   }
 }
