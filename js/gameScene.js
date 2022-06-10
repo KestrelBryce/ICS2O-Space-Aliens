@@ -30,6 +30,12 @@ class GameScene extends Phaser.Scene {
     this.ship = null
     // boolean holding state of missiles fired
     this.fireMissile = false
+
+    //adding score
+    this.score = 0
+    this.scoreText = null
+    // score text style
+    this.scoreTextStyle = { font: '65px Arial', fill: '#ffffff', align: 'center' }
   }
 
   // background colour in rgb
@@ -64,6 +70,9 @@ class GameScene extends Phaser.Scene {
     // place background
     this.background.setOrigin(0,0)
 
+    // adding score text
+    this.scoreText = this.add.text(10, 10, 'score: ' + this.score.toString(), this.scoreTextStyle)
+    
     // adding ship physics
     this.ship = this.physics.add.sprite(200, 1080 - 500, 'ship')
 
@@ -80,6 +89,10 @@ class GameScene extends Phaser.Scene {
     missileCollide.destroy()
     // play zombie death
     this.sound.play('explosion')
+    // adding to score
+    this.score = this.score + 1
+    // updating score text
+    this.scoreText.setText('Score: ' + this.score.toString())
     // for every destroyed, two spawn
     this.createZombie()
     this.createZombie()
