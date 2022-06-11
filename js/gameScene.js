@@ -3,6 +3,8 @@
 // This is the Game scene
 class GameScene extends Phaser.Scene {
 
+  //load "./gameScene.js"
+  
   // create a zombie
   createZombie () {
     // randomizing zombie location
@@ -26,12 +28,14 @@ class GameScene extends Phaser.Scene {
 
     // variable holding game scene background
     this.background = null
-    // variable holding spaceship
-    this.ship = null
+    // variable holding player sprite
+    this.player = null
     // boolean holding state of missiles fired
     this.fireMissile = false
+    // boolean holding player state
+    //let playerDeath = false
 
-    //adding score
+    // adding score
     this.score = 0
     this.scoreText = null
     // score text style
@@ -50,10 +54,10 @@ class GameScene extends Phaser.Scene {
     // images
     // load star background image
     this.load.image('starBackground', 'images/starBackground.png')
-    // load ship image
-    this.load.image('ship', 'images/spaceShip.png')
+    // load player image
+    this.load.image('player', 'updatedImages/firePeashooter.gif')
     // load missile image
-    this.load.image('missile', 'images/missile.png')
+    this.load.image('missile', 'updatedImages/fireball2.png')
     // load zombie image
     this.load.image('Zombie_sprite', 'updatedImages/Zombie_sprite.webp')
 
@@ -62,6 +66,10 @@ class GameScene extends Phaser.Scene {
     this.load.audio('laser', 'sounds/laser1.wav')
     // load zombie death
     this.load.audio('explosion', 'sounds/barrelExploding.wav')
+    // load player death
+    this.load.audio('gameOver', 'updatedSounds/gameOver.mp3')
+    // load ambience
+    this.load.audio('nightAmbience', 'updatedSounds/nightAmbience.wav')
   }
 
   create (data) {
@@ -71,13 +79,15 @@ class GameScene extends Phaser.Scene {
     this.background.setOrigin(0,0)
     // adding score text
     this.scoreText = this.add.text(10, 10, 'score: ' + this.score.toString(), this.scoreTextStyle)
-    // adding ship physics
-    this.ship = this.physics.add.sprite(200, 1080 - 500, 'ship')
+    // adding player physics
+    this.player = this.physics.add.sprite(200, 1080 - 500, 'firePeashooter')
     // adding a group for the missiles
     this.missileGroup = this.physics.add.group()
     // adding a group for the zombies
     this.zombieGroup = this.add.group()
     this.createZombie()
+    // adding background ambience
+    this.sound.play('nightAmbience')
 
   // collisions between zombies and bullets
   this.physics.add.collider(this.missileGroup, this.zombieGroup, function (missileCollide, zombieCollide) {
@@ -95,12 +105,16 @@ class GameScene extends Phaser.Scene {
   }.bind(this))
 
   // collisions between zombies and player
-  this.physics.add.collider(this.ship, this.zombieGroup, function (playerCollide, zombieCollide) {
-    this.sound.play('bomb')
+  this.physics.add.collider(this.player, this.zombieGroup, function (playerCollide, zombieCollide) {
+    this.sound.play('gameOver')
     this.physics.pause()
     zombieCollide.destroy()
     playerCollide.destroy()
     this.scene.switch('deadScene')
+    //let playerDeath = true
+    //this.gameOverText = this.add.text(1920 / 2, 1080 / 2, 'Game Over! Click to play again.', this.gameOverTextStyle).setOrigin(0.5)
+    //this.gameOverText.setInteractive({ useHandCursor: true })
+    //this.gameOverText.on('pointerDown', () => this.scene.start('gameScene'))
   }.bind(this))
   
 }
@@ -116,19 +130,19 @@ class GameScene extends Phaser.Scene {
     // looks for input from space key
     const keySpaceObj = this.input.keyboard.addKey('SPACE')
     
-    // moves ship left
+    // moves player left
     if (keyUpObj.isDown === true) {
-      this.ship.y = this.ship.y - 15
-      if (this.ship.y < 0) {
-        this.ship.y = 0
+      this.player.y = this.player.y - 15
+      if (this.player.y < 0) {
+        this.player.y = 0
       }
     }
 
-    // moves ship right
+    // moves player right
     if (keyDownObj.isDown === true) {
-      this.ship.y = this.ship.y + 15
-      if (this.ship.y > 1050) {
-        this.ship.y = 1050
+      this.player.y = this.player.y + 15
+      if (this.player.y > 1050) {
+        this.player.y = 1050
       }
     }
 
@@ -137,7 +151,7 @@ class GameScene extends Phaser.Scene {
       if (this.fireMissile === false) {
         // fire missile
         this.fireMissile = true
-        const aNewMissile = this.physics.add.sprite(this.ship.x, this.ship.y, 'missile')
+        const aNewMissile = this.physics.add.sprite(this.player.x, this.player.y, 'missile')
         this.missileGroup.add(aNewMissile)
         // add missile sound
         this.sound.play('laser')
@@ -156,7 +170,7 @@ class GameScene extends Phaser.Scene {
     })
 
     // switching to dead scene
-    //if (gameDeath === true) {
+    //if (playerDeath === true) {
     //  this.scene.switch('deadScene')
     //}
   
