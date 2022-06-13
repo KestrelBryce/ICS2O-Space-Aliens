@@ -29,7 +29,7 @@ class DeadScene extends Phaser.Scene {
     // adding background
     this.deadScreenRE = this.add.sprite(0, 0, 'deadScreenRE')
     this.deadScreenRE.x = 1920 / 2
-    this.deadScreenRE.y = 1080 / 2
+    this.deadScreenRE.y = 1080 / 2    
 
     // placing start button image
     this.startButton = this.add.sprite(1920 / 2, (1080 / 2) + 100, 'startButton')

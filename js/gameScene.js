@@ -51,11 +51,14 @@ class GameScene extends Phaser.Scene {
   preload () {
     console.log('Game Scene')
 
+    // reset the score
+     this.score = 0
+
     // images
     // load star background image
     this.load.image('starBackground', 'images/starBackground.png')
     // load player image
-    this.load.image('player', 'updatedImages/firePeashooter.gif')
+    this.load.image('player', 'updatedImages/electricPeashooterSprite.png')
     // load missile image
     this.load.image('missile', 'updatedImages/fireball2.png')
     // load zombie image
@@ -70,6 +73,9 @@ class GameScene extends Phaser.Scene {
     this.load.audio('gameOver', 'updatedSounds/gameOver.mp3')
     // load ambience
     this.load.audio('nightAmbience', 'updatedSounds/nightAmbience.wav')
+
+    // resume physics
+    this.physics.resume()
   }
 
   create (data) {
@@ -80,7 +86,7 @@ class GameScene extends Phaser.Scene {
     // adding score text
     this.scoreText = this.add.text(10, 10, 'score: ' + this.score.toString(), this.scoreTextStyle)
     // adding player physics
-    this.player = this.physics.add.sprite(200, 1080 - 500, 'firePeashooter')
+    this.player = this.physics.add.sprite(200, 1080 - 500, 'player')
     // adding a group for the missiles
     this.missileGroup = this.physics.add.group()
     // adding a group for the zombies
@@ -110,6 +116,13 @@ class GameScene extends Phaser.Scene {
     this.physics.pause()
     zombieCollide.destroy()
     playerCollide.destroy()
+    // destroy all the zombies  
+    this.zombieGroup.clear(true, true)
+    // destroy all the missiles  
+    this.missileGroup.clear(true, true)
+    //this.zombieGroup.remove(this.zombieGroup.children[0], true);
+    console.log(this.zombieGroup)
+    
     this.scene.switch('deadScene')
     //let playerDeath = true
     //this.gameOverText = this.add.text(1920 / 2, 1080 / 2, 'Game Over! Click to play again.', this.gameOverTextStyle).setOrigin(0.5)
