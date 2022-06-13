@@ -3,19 +3,14 @@
 // This is the Game scene
 class GameScene extends Phaser.Scene {
 
-  //load "./gameScene.js"
   
   // create a zombie
   createZombie () {
     // randomizing zombie location
-    const zombieYLocation = Math.floor(Math.random() * 800) + 245 // this will get a number between 1050 amd 0;
-    
-    // randomizing zombie velocity???  >:P
-    //let zombieYVelocity = Math.floor(Math.random() * 50) + 1 // this will get a number between 50 amd 1;
-    //zombieYVelocity *= Math.round(Math.random()) ? 1 : -1 // adding minus sign in 50% of cases
+    const zombieYLocation = Math.floor(Math.random() * 800) + 100 // <- this will get a number between 800 and 245;
 
     // adding zombie sprite
-    const aZombie = this.physics.add.sprite(2000, zombieYLocation, 'Zombie_sprite') // .setScale(-5)
+    const aZombie = this.physics.add.sprite(2000, zombieYLocation, 'Zombie_sprite2').setScale(0.11)
     aZombie.body.velocity.x = -200
     //aZombie.body.velocity.y = zombieYVelocity
 
@@ -62,13 +57,13 @@ class GameScene extends Phaser.Scene {
     // load missile image
     this.load.image('missile', 'updatedImages/fireball2.png')
     // load zombie image
-    this.load.image('Zombie_sprite', 'updatedImages/Zombie_sprite.webp')
+    this.load.image('Zombie_sprite2', 'updatedImages/Zombie_sprite2.webp')
 
     // sounds
     // load missile sound
-    this.load.audio('laser', 'sounds/laser1.wav')
+    this.load.audio('laser', 'updatedSounds/fire.mp3')
     // load zombie death
-    this.load.audio('explosion', 'sounds/barrelExploding.wav')
+    this.load.audio('explosion', 'updatedSounds/splat.mp3')
     // load player death
     this.load.audio('gameOver', 'updatedSounds/gameOver.mp3')
     // load ambience
@@ -178,6 +173,12 @@ class GameScene extends Phaser.Scene {
         item.destroy()
       }
     })
+
+    //this.zombieGroup.children.each(function (body) {
+    //  if (body.x < 2000) {
+    //    this.scene.switch('deadScene')
+    //  }
+    //})
 
     // switching to dead scene
     //if (playerDeath === true) {

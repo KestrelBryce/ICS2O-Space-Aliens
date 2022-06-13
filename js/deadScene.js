@@ -6,7 +6,7 @@ class DeadScene extends Phaser.Scene {
     super({ key: 'deadScene' })
 
     // variable holding dead scene background image
-    this.menuSceneBackgroundImage = null
+    this.deadScreenPVZ = null
 
     // variable holding start button image
     this.restartButton = null
@@ -20,16 +20,16 @@ class DeadScene extends Phaser.Scene {
   // loading background image
   preload () {
     console.log('Dead Scene')
-    this.load.image('deadScreenRE', './updatedImages/deadScreenRE.jpg')
+    this.load.image('deadScreenRE', 'updatedImages/deadScreenRE.jpg')
     this.load.image('startButton', 'images./start.png')
   }
 
   // creating data
   create (data) {
     // adding background
-    this.deadScreenRE = this.add.sprite(0, 0, 'deadScreenRE')
-    this.deadScreenRE.x = 1920 / 2
-    this.deadScreenRE.y = 1080 / 2    
+    this.deadScreenBackgroundImage = this.add.sprite(0, 0, 'deadScreenRE')
+    this.deadScreenBackgroundImage.x = 1920 / 2
+    this.deadScreenBackgroundImage.y = 1080 / 2
 
     // placing start button image
     this.startButton = this.add.sprite(1920 / 2, (1080 / 2) + 100, 'startButton')
