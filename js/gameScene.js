@@ -86,7 +86,7 @@ class GameScene extends Phaser.Scene {
     // adding score text
     this.scoreText = this.add.text(10, 10, 'score: ' + this.score.toString(), this.scoreTextStyle)
     // adding player physics
-    this.player = this.physics.add.sprite(200, 1080 - 500, 'player')
+    this.player = this.physics.add.sprite(420, 1080 - 500, 'player')
     // adding a group for the missiles
     this.missileGroup = this.physics.add.group()
     // adding a group for the zombies
