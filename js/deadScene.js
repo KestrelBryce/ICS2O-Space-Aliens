@@ -37,6 +37,7 @@ class DeadScene extends Phaser.Scene {
     // making the restart button interactive
     this.startButton.setInteractive({ useHandCursor: true })
     this.startButton.on('pointerdown', () => this.scene.start('gameScene'))
+
   }
 
   // clicking button goes to game scene

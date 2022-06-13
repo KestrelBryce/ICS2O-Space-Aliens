@@ -58,7 +58,7 @@ class GameScene extends Phaser.Scene {
     // load star background image
     this.load.image('starBackground', 'images/starBackground.png')
     // load player image
-    this.load.image('player', 'updatedImages/electricPeashooterSprite.png')
+    this.load.image('player', 'updatedImages/electricPeashooterSprite2.png')
     // load missile image
     this.load.image('missile', 'updatedImages/fireball2.png')
     // load zombie image
