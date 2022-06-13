@@ -8,16 +8,16 @@ class GameScene extends Phaser.Scene {
   // create a zombie
   createZombie () {
     // randomizing zombie location
-    const zombieYLocation = Math.floor(Math.random() * 1050) + 0 // this will get a number between 1050 amd 0;
+    const zombieYLocation = Math.floor(Math.random() * 800) + 245 // this will get a number between 1050 amd 0;
     
     // randomizing zombie velocity???  >:P
-    let zombieYVelocity = Math.floor(Math.random() * 50) + 1 // this will get a number between 50 amd 1;
-    zombieYVelocity *= Math.round(Math.random()) ? 1 : -1 // adding minus sign in 50% of cases
+    //let zombieYVelocity = Math.floor(Math.random() * 50) + 1 // this will get a number between 50 amd 1;
+    //zombieYVelocity *= Math.round(Math.random()) ? 1 : -1 // adding minus sign in 50% of cases
 
     // adding zombie sprite
     const aZombie = this.physics.add.sprite(2000, zombieYLocation, 'Zombie_sprite') // .setScale(-5)
     aZombie.body.velocity.x = -200
-    aZombie.body.velocity.y = zombieYVelocity
+    //aZombie.body.velocity.y = zombieYVelocity
 
 
     this.zombieGroup.add(aZombie)
@@ -140,19 +140,19 @@ class GameScene extends Phaser.Scene {
     // looks for input from space key
     const keySpaceObj = this.input.keyboard.addKey('SPACE')
     
-    // moves player left
+    // moves player up
     if (keyUpObj.isDown === true) {
       this.player.y = this.player.y - 15
-      if (this.player.y < 0) {
-        this.player.y = 0
+      if (this.player.y < 245) {
+        this.player.y = 245
       }
     }
 
-    // moves player right
+    // moves player down
     if (keyDownObj.isDown === true) {
       this.player.y = this.player.y + 15
-      if (this.player.y > 1050) {
-        this.player.y = 1050
+      if (this.player.y > 800) {
+        this.player.y = 800
       }
     }
 
