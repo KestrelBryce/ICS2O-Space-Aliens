@@ -12,12 +12,12 @@ class TitleScene extends Phaser.Scene {
     this.titleSceneText = null
 
     // variable holding title scene text style
-    this.titleSceneTextStyle = { font: '200px Times', fill: '#fde4b9', align: 'center' }
+    this.titleSceneTextStyle = { font: '200px Times', fill: '#00FFFF', align: 'center' }
   }
 
   // background colour in rgb
   init (data) {
-    this.cameras.main.setBackgroundColor('#B23116')
+    this.cameras.main.setBackgroundColor('#000080')
   }
 
   // print scene to console for debugging
@@ -34,7 +34,7 @@ class TitleScene extends Phaser.Scene {
     this.PVZTitleScreen.y = 1080 / 2 //1080 / 2
 
     // adding title scene text
-    this.titleSceneText = this.add.text(1920 / 2, (1080 / 2) + 350, 'Electric Boogaloo', this.titleSceneTextStyle).setOrigin(0.5)
+    this.titleSceneText = this.add.text(1920 / 2, (1080 / 2) - 200, 'Electric Boogaloo', this.titleSceneTextStyle).setOrigin(0.50)
   }
 
   // switching to the game scene
