@@ -29,9 +29,9 @@ class TitleScene extends Phaser.Scene {
   // adding title scene
   create (data) {
     // adding title scene background
-    this.titleSceneBackgroundImage = this.add.sprite(0, 0, 'PVZTitleScreen').setScale(2.75)
-    this.PVZTitleScreen.x = 1920 / 2
-    this.PVZTitleScreen.y = 1080 / 2
+    this.PVZTitleScreen = this.add.sprite(0, 0, 'PVZTitleScreen').setScale(2.15)
+    this.PVZTitleScreen.x = 1920 / 2 //1920 / 2
+    this.PVZTitleScreen.y = 1080 / 2 //1080 / 2
 
     // adding title scene text
     this.titleSceneText = this.add.text(1920 / 2, (1080 / 2) + 350, 'Electric Boogaloo', this.titleSceneTextStyle).setOrigin(0.5)
