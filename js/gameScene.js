@@ -112,6 +112,7 @@ class GameScene extends Phaser.Scene {
 
   // collisions between zombies and player
   this.physics.add.collider(this.player, this.zombieGroup, function (playerCollide, zombieCollide) {
+    this.sound.stopAll()
     this.sound.play('gameOver')
     this.physics.pause()
     zombieCollide.destroy()
