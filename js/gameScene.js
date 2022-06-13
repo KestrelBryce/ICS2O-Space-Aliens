@@ -56,7 +56,7 @@ class GameScene extends Phaser.Scene {
 
     // images
     // load star background image
-    this.load.image('starBackground', 'images/starBackground.png')
+    this.load.image('starBackground', 'updatedImages/PVZGameSceneBackground.jpg')
     // load player image
     this.load.image('player', 'updatedImages/electricPeashooterSprite2.png')
     // load missile image
@@ -80,7 +80,7 @@ class GameScene extends Phaser.Scene {
 
   create (data) {
     // load background
-    this.background = this.add.image(0, 0, 'starBackground').setScale(2.0)
+    this.background = this.add.image(0, 0, 'starBackground').setScale(1.5)
     // place background
     this.background.setOrigin(0,0)
     // adding score text
@@ -125,10 +125,6 @@ class GameScene extends Phaser.Scene {
     console.log(this.zombieGroup)
     
     this.scene.switch('deadScene')
-    //let playerDeath = true
-    //this.gameOverText = this.add.text(1920 / 2, 1080 / 2, 'Game Over! Click to play again.', this.gameOverTextStyle).setOrigin(0.5)
-    //this.gameOverText.setInteractive({ useHandCursor: true })
-    //this.gameOverText.on('pointerDown', () => this.scene.start('gameScene'))
   }.bind(this))
   
 }
