@@ -23,18 +23,18 @@ class TitleScene extends Phaser.Scene {
   // print scene to console for debugging
   preload () {
     console.log('Title Scene')
-    this.load.image('titleSceneBackground', 'images/aliens_screen_image.jpg')
+    this.load.image('PVZTitleScreen', 'updatedImages/PVZTitleScreen.jpg')
   }
 
   // adding title scene
   create (data) {
     // adding title scene background
-    this.titleSceneBackgroundImage = this.add.sprite(0, 0, 'titleSceneBackground').setScale(2.75)
-    this.titleSceneBackgroundImage.x = 1920 / 2
-    this.titleSceneBackgroundImage.y = 1080 / 2
+    this.titleSceneBackgroundImage = this.add.sprite(0, 0, 'PVZTitleScreen').setScale(2.75)
+    this.PVZTitleScreen.x = 1920 / 2
+    this.PVZTitleScreen.y = 1080 / 2
 
     // adding title scene text
-    this.titleSceneText = this.add.text(1920 / 2, (1080 / 2) + 350, 'Space Aliens', this.titleSceneTextStyle).setOrigin(0.5)
+    this.titleSceneText = this.add.text(1920 / 2, (1080 / 2) + 350, 'Electric Boogaloo', this.titleSceneTextStyle).setOrigin(0.5)
   }
 
   // switching to the game scene
