@@ -21,7 +21,7 @@ class DeadScene extends Phaser.Scene {
   preload () {
     console.log('Dead Scene')
     this.load.image('deadScreenRE', 'updatedImages/deadScreenRE.jpg')
-    this.load.image('startButton', 'images./start.png')
+    this.load.image('startButton', 'updatedImages/playButton2.webp')
   }
 
   // creating data
@@ -32,7 +32,7 @@ class DeadScene extends Phaser.Scene {
     this.deadScreenBackgroundImage.y = 1080 / 2
 
     // placing start button image
-    this.startButton = this.add.sprite(1920 / 2, (1080 / 2) + 100, 'startButton')
+    this.startButton = this.add.sprite(1920 / 2, (1080 / 2) + 200, 'startButton').setScale(0.35)
     
     // making the restart button interactive
     this.startButton.setInteractive({ useHandCursor: true })
@@ -40,11 +40,6 @@ class DeadScene extends Phaser.Scene {
 
   }
 
-  // clicking button goes to game scene
-  //clickButton () {
-    //this.scene.start('gameScene')
-    //this.scene.start('menuScene')
-  //}
 }
 
 export default DeadScene

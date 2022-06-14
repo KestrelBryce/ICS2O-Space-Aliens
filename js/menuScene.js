@@ -25,7 +25,10 @@ class MenuScene extends Phaser.Scene {
     this.load.image('menuSceneBackground', 'updatedImages/PVZMenuScene.jpg')
 
     // loading start button image
-    this.load.image('startButton', 'images/start.png')
+    this.load.image('playButton2', 'updatedImages/playButton2.webp')
+
+    // loading help button image
+    this.load.image('helpButton', 'updatedImages/helpButton.png')
   }
 
   create (data) {
@@ -35,11 +38,20 @@ class MenuScene extends Phaser.Scene {
     this.menuSceneBackgroundImage.y = 1080 / 2
 
     // placing start button image
-    this.startButton = this.add.sprite(1920 / 2, (1080 / 2) + 100, 'startButton')
+    this.startButton = this.add.sprite(1920 / 2, (1080 / 2) + 100, 'playButton2').setScale(0.35)
+
+    // placing help button image
+    this.helpButton = this.add.sprite(1000, 1300 - 500, 'helpButton').setScale(0.25)
     
     // making the start button ineractive
     this.startButton.setInteractive({ useHandCursor: true })
-    this.startButton.on('pointerdown', () => this.clickButton())
+    this.startButton.on('pointerdown', () => this.scene.start('gameScene'))
+
+    // making the help button interactive
+    this.helpButton.setInteractive({ useHandCursor: true })
+    this.helpButton.on('pointerdown', () => this.scene.start('menuScene'))
+
+    //this.startButton.on('pointerdown', () => this.scene.start('gameScene'))
   }
 
   // switching to the menu scene
@@ -50,9 +62,12 @@ class MenuScene extends Phaser.Scene {
   }
 
   // game scene starts when start button clicked
-  clickButton () {
-    this.scene.start('gameScene')
-  }
+  //clickButton () {
+  //  this.scene.start('gameScene')
+  //}
+
+  // testing making help button work
+  
 }
 
 export default MenuScene
