@@ -49,7 +49,7 @@ class MenuScene extends Phaser.Scene {
 
     // making the help button interactive
     this.helpButton.setInteractive({ useHandCursor: true })
-    this.helpButton.on('pointerdown', () => this.scene.start('menuScene'))
+    this.helpButton.on('pointerdown', () => this.scene.start('helpScene'))
 
     //this.startButton.on('pointerdown', () => this.scene.start('gameScene'))
   }

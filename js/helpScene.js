@@ -14,20 +14,20 @@ class HelpScene extends Phaser.Scene {
 
   // background colour in rgb
   init (data) {
-    this.cameras.main.setBackgroundColor('#609EA2')
+    this.cameras.main.setBackgroundColor('#008b0a')
   }
 
   // loading background image
   preload () {
     console.log('Help Scene')
-    this.load.image('zombieNote', 'updatedImages/zombieNote.webp')
+    this.load.image('zombieNote', 'updatedImages/Pvz-help2.webp')
     this.load.image('backButton', 'updatedImages/backButton.webp')
   }
 
   // creating data
   create (data) {
     // adding background
-    this.helpScreenBackgroundImage = this.add.sprite(0, 0, 'zombieNote')
+    this.helpScreenBackgroundImage = this.add.sprite(0, 0, 'zombieNote').setScale(2.5)
     this.helpScreenBackgroundImage.x = 1920 / 2
     this.helpScreenBackgroundImage.y = 1080 / 2
 
