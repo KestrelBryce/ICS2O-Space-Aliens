@@ -47,7 +47,7 @@ class GameScene extends Phaser.Scene {
     console.log('Game Scene')
 
     // reset the score
-     this.score = 0
+    this.score = 0
 
     // images
     // load star background image
@@ -66,8 +66,8 @@ class GameScene extends Phaser.Scene {
     this.load.audio('explosion', 'updatedSounds/splat.mp3')
     // load player death
     this.load.audio('gameOver', 'updatedSounds/gameOver.mp3')
-    // load ambience
-    this.load.audio('nightAmbience', 'updatedSounds/nightAmbience.wav')
+    // load music
+    this.load.audio('nightAmbience', 'updatedSounds/ultimateBattle.mp3')
 
     // resume physics
     this.physics.resume()
@@ -87,6 +87,8 @@ class GameScene extends Phaser.Scene {
     // adding a group for the zombies
     this.zombieGroup = this.add.group()
     this.createZombie()
+    // stopping other sounds
+    this.sound.stopAll()
     // adding background ambience
     this.sound.play('nightAmbience')
 
@@ -173,17 +175,6 @@ class GameScene extends Phaser.Scene {
         item.destroy()
       }
     })
-
-    //this.zombieGroup.children.each(function (body) {
-    //  if (body.x < 2000) {
-    //    this.scene.switch('deadScene')
-    //  }
-    //})
-
-    // switching to dead scene
-    //if (playerDeath === true) {
-    //  this.scene.switch('deadScene')
-    //}
   
   }
 }

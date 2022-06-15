@@ -24,6 +24,7 @@ class TitleScene extends Phaser.Scene {
   preload () {
     console.log('Title Scene')
     this.load.image('PVZTitleScreen', 'updatedImages/PVZTitleScreen.jpg')
+    
   }
 
   // adding title scene
@@ -35,9 +36,11 @@ class TitleScene extends Phaser.Scene {
 
     // adding title scene text
     this.titleSceneText = this.add.text(1920 / 2, (1080 / 2) - 200, 'Electric Boogaloo', this.titleSceneTextStyle).setOrigin(0.50)
+
+
   }
 
-  // switching to the game scene
+  // switching to the menu scene
   update (time, delta) {
     if (time > 6000) {
       this.scene.switch('menuScene')

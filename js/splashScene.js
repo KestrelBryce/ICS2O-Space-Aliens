@@ -16,12 +16,16 @@ class SplashScene extends Phaser.Scene {
   preload () {
     console.log('Splash Scene')
     this.load.image('splashSceneBackground', './images/splashSceneImage.png')
+    this.load.audio('PVZintro', 'updatedSounds/introTheme.mp3')
   }
 
   create (data) {
     this.splashSceneBackgroundImage = this.add.sprite(0, 0, 'splashSceneBackground')
     this.splashSceneBackgroundImage.x = 1920 / 2
     this.splashSceneBackgroundImage.y = 1080 / 2
+
+    // adding background ambience
+    this.sound.play('PVZintro')
   }
 
   // stopping splash scene and moving to title screen
