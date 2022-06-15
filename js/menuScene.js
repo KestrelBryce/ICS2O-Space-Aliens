@@ -41,7 +41,7 @@ class MenuScene extends Phaser.Scene {
     this.startButton = this.add.sprite(1920 / 2, (1080 / 2) + 100, 'playButton2').setScale(0.35)
 
     // placing help button image
-    this.helpButton = this.add.sprite(1000, 1300 - 500, 'helpButton').setScale(0.25)
+    this.helpButton = this.add.sprite(975, 1300 - 400, 'helpButton').setScale(0.25)
     
     // making the start button ineractive
     this.startButton.setInteractive({ useHandCursor: true })
