@@ -32,7 +32,7 @@ class HelpScene extends Phaser.Scene {
     this.helpScreenBackgroundImage.y = 1080 / 2
 
     // placing start button image
-    this.backButton = this.add.sprite(420, 1080 - 500, 'backButton')
+    this.backButton = this.add.sprite(170, 1080 - 900, 'backButton').setScale(0.65)
     
     // making the restart button interactive
     this.backButton.setInteractive({ useHandCursor: true })

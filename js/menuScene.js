@@ -14,7 +14,7 @@ class MenuScene extends Phaser.Scene {
 
   // background colour in rgb
   init (data) {
-    this.cameras.main.setBackgroundColor('#ffffff')
+    this.cameras.main.setBackgroundColor('#ddede2')
   }
 
   // print scene to console for debugging
