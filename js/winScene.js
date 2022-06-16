@@ -1,12 +1,12 @@
 /* global phaser */
 
 // this is the dead scene
-class DeadScene extends Phaser.Scene {
+class WinScene extends Phaser.Scene {
   constructor () {
-    super({ key: 'deadScene' })
+    super({ key: 'winScene' })
 
     // variable holding dead scene background image
-    this.deadScreenPVZ = null
+    this.winScreenPVZ = null
 
     // variable holding start button image
     this.restartButton = null
@@ -20,7 +20,7 @@ class DeadScene extends Phaser.Scene {
   // loading background image
   preload () {
     console.log('Dead Scene')
-    this.load.image('deadScreenRE', 'updatedImages/deadScreenRE.jpg')
+    this.load.image('winScreen', 'updatedImages/winScreen.png')
     this.load.image('startButton', 'updatedImages/playButton2.webp')
     this.load.image('backButton', 'updatedImages/backButton.webp')
   }
@@ -28,9 +28,9 @@ class DeadScene extends Phaser.Scene {
   // creating data
   create (data) {
     // adding background
-    this.deadScreenBackgroundImage = this.add.sprite(0, 0, 'deadScreenRE')
-    this.deadScreenBackgroundImage.x = 1920 / 2
-    this.deadScreenBackgroundImage.y = 1080 / 2
+    this.winScreenBackgroundImage = this.add.sprite(0, 0, 'winScreen')
+    this.winScreenBackgroundImage.x = 1920 / 2
+    this.winScreenBackgroundImage.y = 1080 / 2
 
     // placing start button image
     this.startButton = this.add.sprite(1920 / 2, (1080 / 2) + 200, 'startButton').setScale(0.35)
@@ -50,4 +50,4 @@ class DeadScene extends Phaser.Scene {
 
 }
 
-export default DeadScene
+export default WinScene

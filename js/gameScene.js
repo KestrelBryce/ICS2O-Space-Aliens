@@ -48,7 +48,7 @@ class GameScene extends Phaser.Scene {
 
     // reset the score
     this.score = 0
-
+    
     // images
     // load star background image
     this.load.image('starBackground', 'updatedImages/PVZGameSceneBackground.jpg')
@@ -130,15 +130,27 @@ class GameScene extends Phaser.Scene {
   update (time, delta) {
     // hopefully called 60 times a second
 
-    // looks for input from left key
-    const keyUpObj = this.input.keyboard.addKey('W')
-    // looks for input from right key
-    const keyDownObj = this.input.keyboard.addKey('S')
+    // looks for input from W key
+    const keyUpObj1 = this.input.keyboard.addKey('W')
+    // looks for input from up key
+    const keyUpObj2 = this.input.keyboard.addKey('UP')
+    
+    // looks for input from S key
+    const keyDownObj1 = this.input.keyboard.addKey('S')
+    // looks for input from down key
+    const keyDownObj2 = this.input.keyboard.addKey('DOWN')
+    
     // looks for input from space key
     const keySpaceObj = this.input.keyboard.addKey('SPACE')
     
     // moves player up
-    if (keyUpObj.isDown === true) {
+    if (keyUpObj1.isDown === true) {
+      this.player.y = this.player.y - 15
+      if (this.player.y < 245) {
+        this.player.y = 245
+      }
+    }
+    if (keyUpObj2.isDown === true) {
       this.player.y = this.player.y - 15
       if (this.player.y < 245) {
         this.player.y = 245
@@ -146,7 +158,13 @@ class GameScene extends Phaser.Scene {
     }
 
     // moves player down
-    if (keyDownObj.isDown === true) {
+    if (keyDownObj1.isDown === true) {
+      this.player.y = this.player.y + 15
+      if (this.player.y > 800) {
+        this.player.y = 800
+      }
+    }
+    if (keyDownObj2.isDown === true) {
       this.player.y = this.player.y + 15
       if (this.player.y > 800) {
         this.player.y = 800
@@ -158,7 +176,7 @@ class GameScene extends Phaser.Scene {
       if (this.fireMissile === false) {
         // fire missile
         this.fireMissile = true
-        const aNewMissile = this.physics.add.sprite(this.player.x, this.player.y, 'missile')
+        const aNewMissile = this.physics.add.sprite(this.player.x, this.player.y, 'missile').setScale(0.25)
         this.missileGroup.add(aNewMissile)
         // add missile sound
         this.sound.play('laser')
@@ -175,6 +193,10 @@ class GameScene extends Phaser.Scene {
         item.destroy()
       }
     })
+
+    if (this.score === 1) {
+      this.scene.switch('winScene')
+    }
   
   }
 }

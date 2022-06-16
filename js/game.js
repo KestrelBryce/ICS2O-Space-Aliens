@@ -6,6 +6,7 @@ import MenuScene from "./menuScene.js"
 import HelpScene from "./helpScene.js"
 import GameScene from "./gameScene.js"
 import DeadScene from "./deadScene.js"
+import WinScene from "./winScene.js"
 
 // Our game scenes
 const splashScene = new SplashScene()
@@ -14,6 +15,7 @@ const menuScene = new MenuScene()
 const helpScene = new HelpScene()
 const gameScene = new GameScene()
 const deadScene = new DeadScene()
+const winScene = new WinScene()
 
 //* Game scene */
 const config = {
@@ -45,6 +47,7 @@ game.scene.add('menuScene', menuScene)
 game.scene.add('helpScene', helpScene)
 game.scene.add('gameScene', gameScene)
 game.scene.add('deadScene', deadScene)
+game.scene.add('winScene', winScene)
 
 // start title
 game.scene.start('splashScene')
