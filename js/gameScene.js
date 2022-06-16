@@ -195,6 +195,7 @@ class GameScene extends Phaser.Scene {
     })
 
     if (this.score === 1) {
+      this.sound.stopAll()
       this.scene.switch('winScene')
     }
   
