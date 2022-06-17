@@ -196,7 +196,7 @@ class GameScene extends Phaser.Scene {
       }
     })
 
-    if (this.score === 1) {
+    if (this.score === 100) {
       this.sound.stopAll()
       this.sound.play('winMusic')
 
