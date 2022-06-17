@@ -19,10 +19,12 @@ class WinScene extends Phaser.Scene {
 
   // loading background image
   preload () {
-    console.log('Dead Scene')
+    console.log('Win Scene')
     this.load.image('winScreen', 'updatedImages/winScreen.png')
     this.load.image('startButton', 'updatedImages/playButton2.webp')
     this.load.image('backButton', 'updatedImages/backButton.webp')
+
+    this.load.audio('introTheme', 'updatedSounds/introTheme.mp3')
   }
 
   // creating data
@@ -44,8 +46,10 @@ class WinScene extends Phaser.Scene {
 
     // making the back button interactive
     this.backButton.setInteractive({ useHandCursor: true })
-    this.backButton.on('pointerdown', () => this.scene.start('menuScene'))
+    this.backButton.on('pointerdown', () =>   this.scene.start('menuScene'))
 
+    // this.sound.stopAll(),
+    //this.sound.play('introTheme'),
   }
 
 }

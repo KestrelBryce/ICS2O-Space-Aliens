@@ -66,6 +66,8 @@ class GameScene extends Phaser.Scene {
     this.load.audio('explosion', 'updatedSounds/splat.mp3')
     // load player death
     this.load.audio('gameOver', 'updatedSounds/gameOver.mp3')
+    // load player win
+    this.load.audio('winMusic', 'updatedSounds/winMusic.mp3')
     // load music
     this.load.audio('nightAmbience', 'updatedSounds/ultimateBattle.mp3')
 
@@ -196,6 +198,18 @@ class GameScene extends Phaser.Scene {
 
     if (this.score === 1) {
       this.sound.stopAll()
+      this.sound.play('winMusic')
+
+      this.physics.pause()
+      //zombieGroup.destroy()
+      this.player.destroy()
+      // destroy all the zombies  
+      this.zombieGroup.clear(true, true)
+      // destroy all the missiles  
+      this.missileGroup.clear(true, true)
+      console.log(this.zombieGroup)
+    
+      
       this.scene.switch('winScene')
     }
   

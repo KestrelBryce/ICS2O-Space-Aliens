@@ -43,13 +43,21 @@ class MenuScene extends Phaser.Scene {
     // placing help button image
     this.helpButton = this.add.sprite(975, 1300 - 400, 'helpButton').setScale(0.25)
     
-    // making the start button ineractive
+    // making the start button interactive
     this.startButton.setInteractive({ useHandCursor: true })
     this.startButton.on('pointerdown', () => this.scene.start('gameScene'))
 
     // making the help button interactive
     this.helpButton.setInteractive({ useHandCursor: true })
     this.helpButton.on('pointerdown', () => this.scene.start('helpScene'))
+
+    // if coming from winScene/deadScene
+    //if (backButtonClicked() === true) {
+    //  this.sound.stopAll()
+    //  this.audio.play('introTheme')
+    //}
+
+    
 
     //this.startButton.on('pointerdown', () => this.scene.start('gameScene'))
   }
