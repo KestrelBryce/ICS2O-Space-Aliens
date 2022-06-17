@@ -9,7 +9,13 @@ class MenuScene extends Phaser.Scene {
     this.menuSceneBackgroundImage = null
 
     // variable holding start button image
-    this.startButton = null
+    this.startButton1 = null
+
+    // variable holding game mode
+    this.endlessMode = null
+
+    // variable holding title scene text style
+    this.menuSceneTextStyle = { font: '75px Times', fill: '#000000', align: 'center' }
   }
 
   // background colour in rgb
@@ -37,44 +43,33 @@ class MenuScene extends Phaser.Scene {
     this.menuSceneBackgroundImage.x = 1920 / 2
     this.menuSceneBackgroundImage.y = 1080 / 2
 
-    // placing start button image
-    this.startButton = this.add.sprite(1920 / 2, (1080 / 2) + 100, 'playButton2').setScale(0.35)
+    // standard button text
+    this.menuSceneText = this.add.text(1920 / 2, (1080 / 2) + 200, 'Normal     Help    Endless', this.menuSceneTextStyle).setOrigin(0.50)
+    
+    // placing standard button image
+    this.startButton1 = this.add.sprite(700, 1300 - 400, 'playButton2').setScale(0.35)
+
+    // placing endless button image
+    this.startButton2 = this.add.sprite(1250, 1300 - 400, 'playButton2').setScale(0.35)
 
     // placing help button image
     this.helpButton = this.add.sprite(975, 1300 - 400, 'helpButton').setScale(0.25)
-    
-    // making the start button interactive
-    this.startButton.setInteractive({ useHandCursor: true })
-    this.startButton.on('pointerdown', () => this.scene.start('gameScene'))
 
+    
+    // making the standard button interactive
+    this.startButton1.setInteractive({ useHandCursor: true })
+    this.startButton1.on('pointerdown', () => this.scene.start('gameScene'))
+
+    // making the endless button interactive
+    this.startButton2.setInteractive({ useHandCursor: true })
+    this.startButton2.on('pointerdown', () => this.scene.start('gameScene'))
+    // this.endlessMode === true,
+    
     // making the help button interactive
     this.helpButton.setInteractive({ useHandCursor: true })
     this.helpButton.on('pointerdown', () => this.scene.start('helpScene'))
 
-    // if coming from winScene/deadScene
-    //if (backButtonClicked() === true) {
-    //  this.sound.stopAll()
-    //  this.audio.play('introTheme')
-    //}
-
-    
-
-    //this.startButton.on('pointerdown', () => this.scene.start('gameScene'))
   }
-
-  // switching to the menu scene
-  update (time, delta) {
-    //if (time > 3000) {
-    //  this.scene.switch('menuScene')
-    //}
-  }
-
-  // game scene starts when start button clicked
-  //clickButton () {
-  //  this.scene.start('gameScene')
-  //}
-
-  // testing making help button work
   
 }
 
